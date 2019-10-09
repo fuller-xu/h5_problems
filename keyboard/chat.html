@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>聊天室</title>
+		<link rel="stylesheet" type="text/css" href="./style.css" />
+	</head>
+	<body>
+		<div id="app">
+			<div class="chat__content"></div>
+			<div class="input__content">
+				<div class="input" contenteditable="true"></div>
+				<button>发送</button>
+			</div>
+		</div>
+		<script type="text/javascript" src="./util.js"></script>
+		<script type="text/javascript" src="./compatible.js"></script>
+		<script type="text/javascript" src="./vconsole.min.js"></script>
+		<script>
+			new VConsole();
+			//页面加载完成
+			window.onload = function() {
+				/* 添加Dom内容 */
+				var contentDom = document.querySelector('.chat__content');
+				for (let i = 1; i <= 20; i++) {
+					var itemDom = document.createElement('div');
+					var childDom = document.createElement('p');
+					childDom.innerHTML = '聊天内容' + i;
+					itemDom.appendChild(childDom);
+					contentDom.appendChild(itemDom);
+				}
+
+				/* 监听input */
+				//悬浮区域的input
+				var $inputs = document.querySelectorAll(".input");
+				for (var i = 0; i < $inputs.length; i++) {
+					listenKeybord($inputs[i]);
+				}
+			}
+		</script>
+	</body>
+</html>
